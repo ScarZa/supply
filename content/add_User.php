@@ -42,7 +42,7 @@ function fncSubmit()
           <div class="col-lg-12">
               <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title"> เพิ่มผู้ใช้งานระบบ </h3>
+                    <h3 class="panel-title">เพิ่มผู้ใช้งานระบบ</h3>
                     </div>
                 <div class="panel-body">		
                     <form name='form1' class="navbar-form navbar-left"  action='index.php?page=process/prc_data' method='post' enctype="multipart/form-data" OnSubmit="return fncSubmit();">
