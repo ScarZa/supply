@@ -240,7 +240,7 @@ $op_id=$op[$i];
         echo "<span class='glyphicon glyphicon-remove'></span>";
         echo "<a href='index.php?page=content/add_list_withdrawal&id=$op_id&amount=$up_amount' >กลับ</a>";
     } else {
-        if($_POST['check']=='plus'){
+        if(isset($_POST['check'])=='plus'){
         echo" <META HTTP-EQUIV='Refresh' CONTENT='2;URL=../content/detial_withdrawal_order.php?id=$op_id'>";    
         }else{
         echo" <META HTTP-EQUIV='Refresh' CONTENT='2;URL=index.php?page=content/add_withdrawal_order'>";
@@ -287,8 +287,46 @@ $remain=$select_wd[0]['amount']-$up_amount;
         $data=array($pay_date,$po_id,$wd_id,$mate_id,$up_amount,$total,$remain,$_SESSION['user_s']);
         $table="se_pay";
         $check_list=$mydata->insert($table, $data);
+        
+        }for($i=0;$i<count($_POST['amount2']);$i++){
+$mate2[$i]=$_POST['mate_id2'][$i];
+echo $mate2_id=$mate2[$i];
+$amount2[$i]=$_POST['amount2'][$i];
+$up_amount2=$amount2[$i];
+$sql="select pay from se_material where mate_id='$mate2_id'";
+$mydata->db_m($sql);
+$select_pay2=$mydata->select();
+$pay2=$select_pay2[0]['pay']+$up_amount2;
+        
+        $data=array($pay2);
+        $table="se_material";
+        $field=array("pay");
+        $where="mate_id='$mate2_id'";
+        $check_mate=$mydata->update($table, $data, $where,$field);//แบบ parameter ไม่ครบ ให้ใส่ค่าว่างเลย    
+
+$sql="select receive,pay from se_material where mate_id='$mate2_id'";
+$mydata->db_m($sql);
+$select_res_pay2=$mydata->select();
+
+$bo[$i]=$_POST['bo_id'];
+$bo_id=$bo[$i];
+$total2=$select_res_pay2[0]['receive']-$select_res_pay2[0]['pay'];
+
+$sql="select amount from se_borrow where bo_id='$bo_id' and mate_id='$mate2_id'";
+$mydata->db_m($sql);
+$select_bo=$mydata->select();
+$remain2=$select_bo[0]['amount']-$up_amount2;
+
+        $data=array($pay_date,$po_id,$wd_id,$mate2_id,$up_amount2,$total2,$remain2,$_SESSION['user_s'],'B');
+        $table="se_pay";
+        $check_list=$mydata->insert($table, $data);
         } 
-         if(!$check_list){
+        $data=array('A',$po_id);
+        $table="se_borrow_order";
+        $field=array("bo_status","po_id");
+        $where="bo_id='$bo_id'";
+        $check_update=$mydata->update($table, $data, $where,$field);
+         if(!$check_update){
         echo "<span class='glyphicon glyphicon-remove'></span>";
         echo "<a href='index.php?page=content/add_pay_order&id=$po_id&amount=$up_amount' >กลับ</a>";
     } else {
