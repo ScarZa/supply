@@ -108,16 +108,13 @@
                         </div>
                   <input type="hidden" name="po_id[]" id="po_id[]" value="<?=$edit[$I]['po_id']?>">      
                       <?php  $I++;}?>
-                  รายการยืม
+                  <div class="col-lg-12"><h4>รายการยืม</h4></div>
                   <?php
-                        
-    echo $detial_order[0]['dep_id'];
                         $sql="SELECT * FROM se_borrow bor
 INNER JOIN se_borrow_order bo ON bo.bo_id=bor.bo_id
 WHERE bo.dep_id='".$detial_order[0]['dep_id']."' AND bo.bo_status='Y' AND bo.po_id='0'";
                         $mydata->db_m($sql);
                         $edit2=$mydata->select();
-                        echo count($edit2);                      
                         $I=0;
                         for($c=1;$c<= count($edit2);$c++){?>
                         <div class="col-lg-12">

@@ -288,9 +288,11 @@ $remain=$select_wd[0]['amount']-$up_amount;
         $table="se_pay";
         $check_list=$mydata->insert($table, $data);
         
-        }for($i=0;$i<count($_POST['amount2']);$i++){
+        }
+        if(!empty($_POST['amount2'])){
+        for($i=0;$i<count($_POST['amount2']);$i++){
 $mate2[$i]=$_POST['mate_id2'][$i];
-echo $mate2_id=$mate2[$i];
+$mate2_id=$mate2[$i];
 $amount2[$i]=$_POST['amount2'][$i];
 $up_amount2=$amount2[$i];
 $sql="select pay from se_material where mate_id='$mate2_id'";
@@ -326,7 +328,8 @@ $remain2=$select_bo[0]['amount']-$up_amount2;
         $field=array("bo_status","po_id");
         $where="bo_id='$bo_id'";
         $check_update=$mydata->update($table, $data, $where,$field);
-         if(!$check_update){
+        }
+         if(!$check_list){
         echo "<span class='glyphicon glyphicon-remove'></span>";
         echo "<a href='index.php?page=content/add_pay_order&id=$po_id&amount=$up_amount' >กลับ</a>";
     } else {
