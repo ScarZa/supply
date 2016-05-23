@@ -27,10 +27,10 @@ function fncSubmit()
     
 			 if(null !==(filter_input(INPUT_GET, 'ss_id', FILTER_SANITIZE_NUMBER_INT))){ 
 			 $user_idGet=filter_input(INPUT_GET, 'ss_id', FILTER_SANITIZE_NUMBER_INT);
-                          if(filter_input(INPUT_GET, 'method', FILTER_SANITIZE_STRING)=='update'){
+                          if(filter_input(INPUT_GET, 'method', FILTER_SANITIZE_STRING)=='update_user'){
                              $status= filter_input(INPUT_GET, 'status', FILTER_SANITIZE_STRING);
                          }else{
-                         $status=$_SESSION['ss_status'];}
+                         $status=$_SESSION['Status_s'];}
 			 $sql="select ssm.*,concat(e.firstname,' ',e.lastname) as fullname from  ss_member ssm
                              inner join emppersonal e on e.empno=ssm.ss_Name where ssm.ss_Name='$user_idGet' and ssm.ss_Status='$status'";
 			 $mydata->db_m($sql);
@@ -106,10 +106,11 @@ function fncSubmit()
                 $Get_id=$_GET['ID'];
                 echo "<input type='hidden' name='ID' value='$Get_id'>";
 		echo "<input type='hidden' name='ss_id' value='$user_idGet'>";
-		echo "<input type='hidden' name='method' value='update'>";
+		echo "<input type='hidden' name='method' value='update_user'>";
                 ?>
         <p><button  class="btn btn-warning" id='save'> แก้ไข </button > <input type='reset' class="btn btn-danger"   > </p>
 	<?php }  else {?>
+        <input type="hidden" name="method" value="add_user">
          <p><button  class="btn btn-success" id='save'> บันทึก </button > <input type='reset' class="btn btn-danger"   > </p>
               <?php } ?>
 		</form>

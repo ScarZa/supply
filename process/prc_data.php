@@ -406,7 +406,43 @@ $borrow_id=$select_borrow[0]['borrow_id'];
     } else {
         echo" <META HTTP-EQUIV='Refresh' CONTENT='2;URL=index.php?page=content/add_borrow_order'>";
     }
+        }elseif($method=='add_user'){
+            $username=  trim(md5($_POST['user_account']));
+            $pass_word=  trim(md5($_POST['user_pwd']));
+        $data=array($username,$pass_word,$_POST['user_account'],$_POST['name'],$_POST['admin'],$_POST['process']);
+        $table="ss_member";
+        $check_user=$mydata->insert($table, $data);
+        $mydata->close_mysqli();
+        if(!$check_user){
+        echo "<span class='glyphicon glyphicon-remove'></span>";
+        echo "<a href='index.php?page=content/add_User' >กลับ</a>";
+    } else {
+        echo" <META HTTP-EQUIV='Refresh' CONTENT='2;URL=index.php?page=content/add_user'>";
         }
+    }elseif($method=='update_user'){
+        if(!empty($_POST['user_pwd'])){
+            $username=  trim(md5($_POST['user_account']));
+            $pass_word=  trim(md5($_POST['user_pwd']));
+        $data=array($username,$pass_word,$_POST['user_account'],$_POST['name'],$_POST['admin'],$_POST['process']);
+        $table="ss_member";
+        $where="ss_UserID='".$_POST['ID']."'";
+        $check_user=$mydata->update($table, $data, $where, '');
+        }else{
+            $username=  trim(md5($_POST['user_account']));
+        $data=array($username,$_POST['user_account'],$_POST['name'],$_POST['admin'],$_POST['process']);
+        $table="ss_member";
+        $where="ss_UserID='".$_POST['ID']."'";
+        $field=array("ss_Username","ss_user_name","ss_Name","ss_Status","ss_process");
+        $check_user=$mydata->update($table, $data, $where, $field);  
+        }
+        $mydata->close_mysqli();
+        if(!$check_user){
+        echo "<span class='glyphicon glyphicon-remove'></span>";
+        echo "<a href='index.php?page=content/add_User' >กลับ</a>";
+    } else {
+        echo" <META HTTP-EQUIV='Refresh' CONTENT='2;URL=index.php?page=content/add_user'>";
+        }
+    }
     }elseif(null !==(filter_input(INPUT_GET, 'method'))){
        $method=filter_input(INPUT_GET, 'method');
        if($method=='delete_comp') {
@@ -471,6 +507,16 @@ $borrow_id=$select_borrow[0]['borrow_id'];
         echo "<a href='index.php?page=content/add_pay_order&id=$delete_id' >กลับ</a>";
     } else {
         echo" <META HTTP-EQUIV='Refresh' CONTENT='2;URL=index.php?page=content/add_pay_order'>";
+        }
+        }elseif($method=='delete_user') {
+        $table="ss_member";
+        $where="ss_UserID='".$_GET['ID']."'";
+        $del=$mydata->delete($table, $where);
+        if($del==false){
+        echo "<span class='glyphicon glyphicon-remove'></span>";
+        echo "<a href='index.php?page=content/add_User&id=".$_GET['ss_id']."' >กลับ</a>";
+    } else {
+        echo" <META HTTP-EQUIV='Refresh' CONTENT='2;URL=index.php?page=content/add_User'>";
         }
         }
 }

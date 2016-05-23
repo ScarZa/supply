@@ -48,11 +48,11 @@ for($i=0;$i<count($result);$i++){?>
                                         </TD>
 					<TD align="center"><?=$result[$i]['ss_user_name']; ?></TD>
  					<TD align="center">
-				    <a href='index.php?page=content/add_User&method=update&ss_id=<?=$result[$i]['empno']?>&status=<?=$result[$i]['status']?>&ID=<?= $result[$i]['ID']?>' >
+				    <a href='index.php?page=content/add_User&method=update_user&ss_id=<?=$result[$i]['empno']?>&status=<?=$result[$i]['status']?>&ID=<?= $result[$i]['ID']?>' >
                                         <img src="images/icon_set1/document_edit.ico" width="25"></a> 
                                         </td>
                                         <td align="center">
-					<a href='index.php?page=process/prcuser&method=delete&ss_id=<?=$result[$i]['empno']?>&ID=<?= $result[$i]['ID']?>'  title="confirm" onclick="if(confirm('ยืนยันการลบ <?= $result[$i]['fullname']?>&nbsp;ออกจากรายการ ')) return true; else return false;">   
+					<a href='index.php?page=process/prc_data&method=delete_user&ss_id=<?=$result[$i]['empno']?>&ID=<?= $result[$i]['ID']?>'  title="confirm" onclick="if(confirm('ยืนยันการลบ <?= $result[$i]['fullname']?>&nbsp;ออกจากรายการ ')) return true; else return false;">   
 					<img src="images/icon_set1/document_delete.ico" width="25"></a>
                                         </td>
 					</tr> 
