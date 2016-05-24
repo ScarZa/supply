@@ -103,7 +103,10 @@ function fncSubmit()
  <br>
  <?PHP 
 	if(!empty($user_idGet)){
-                $Get_id=$_GET['ID'];
+            if(!empty($_GET['ID'])){
+            $Get_id=$_GET['ID'];}  else {
+                $Get_id=$resultGet[0]['ss_UserID'];
+}
                 echo "<input type='hidden' name='ID' value='$Get_id'>";
 		echo "<input type='hidden' name='ss_id' value='$user_idGet'>";
 		echo "<input type='hidden' name='method' value='update_user'>";

@@ -121,12 +121,12 @@ require 'class/table_create.php';?>
                                       
                                         if (empty($empno_photo)) {
                                     $photo = 'person.png';
-                                    //$fold = $resultHos[0]['url']."/hrd/images/";
-                                    $fold = "images/";
+                                    $fold = $resultHos[0]['url']."/hrd/images/";
+                                     //$fold = "images/";
                                 } else {
                                     $photo = $empno_photo;
-                                    //$fold = $resultHos[0]['url']."/hrd/photo/";
-                                    $fold = "photo/";
+                                    $fold = $resultHos[0]['url']."/hrd/photo/";
+                                    //$fold = "photo/";
                                 }
                                         //$db->close();
                                     }
@@ -149,9 +149,10 @@ require 'class/table_create.php';?>
                   </li>
                   <!-- Menu Footer-->
                   <li class="user-footer">
+                      <?php if($_SESSION['Status_s']=='ADMIN' or ($_SESSION['Status_s']=='SUSER' and $_SESSION['process_s']=='5')){?>
                     <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">ข้อมูลส่วนตัว</a>
-                    </div>
+                        <a href="index.php?page=content/add_User&ss_id=<?= $_SESSION['user_s']?>" class="btn btn-default btn-flat">ข้อมูลส่วนตัว</a>
+                      </div><?php }?>
                     <div class="pull-right">
                         <a href="index.php?page=process/logout" class="btn btn-default btn-flat">ออกจากระบบ</a>
                     </div>
@@ -186,12 +187,12 @@ require 'class/table_create.php';?>
      }                     
                     if (!empty($resultHos[0]['logo'])) {
                                     $pic = $resultHos[0]['logo'];
-                                    //$fol = $resultHos[0]['url']."/hrd/logo/";
-                                    $fol = "logo/";
+                                    $fol = $resultHos[0]['url']."/hrd/logo/";
+                                    //$fol = "logo/";
                                 } else {
                                     $pic = 'agency.ico';
-                                    //$fol = $resultHos[0]['url']."/hrd/images/";
-                                    $fol = "images/";
+                                    $fol = $resultHos[0]['url']."/hrd/images/";
+                                    //$fol = "images/";
                                 }
                     
                                 //$db->close();
@@ -225,22 +226,29 @@ require 'class/table_create.php';?>
               </a>
               <ul class="treeview-menu">
                 <li><a href="index.php?page=content/add_withdrawal_order"><i class="fa fa-circle-o text-red"></i> เบิกวัสดุ</a></li>
+                <?php if($_SESSION['Status_s']=='ADMIN' or ($_SESSION['Status_s']=='SUSER' and $_SESSION['process_s']=='5')){?>
                 <li><a href="index.php?page=content/add_pay_order"><i class="fa fa-circle-o text-red"></i> จ่ายวัสดุ</a></li>
+                <?php }?>
                 <li>
                   <a href="#"><i class="fa fa-circle-o text-orange"></i> การยืมวัสดุ <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
                     <li><a href="index.php?page=content/add_borrow_order"><i class="fa fa-circle-o text-yellow"></i> ยืมวัสดุ</a></li>
+                    <?php if($_SESSION['Status_s']=='ADMIN' or ($_SESSION['Status_s']=='SUSER' and $_SESSION['process_s']=='5')){?>
                     <li><a href="index.php?page=content/add_pay_borrow"><i class="fa fa-circle-o text-yellow"></i> จ่ายวัสดุ</a></li>
+                    <?php }?>
                     </ul>
                 </li>
+                <?php if($_SESSION['Status_s']=='ADMIN' or ($_SESSION['Status_s']=='SUSER' and $_SESSION['process_s']=='5')){?>
                 <li>
                   <a href="#"><i class="fa fa-circle-o text-orange"></i> รายงาน <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
                     <li><a href="index.php?page=content/add_pay_order&method=report"><i class="fa fa-circle-o text-yellow"></i> รายการขอเบิก-จ่าย</a></li>
                     </ul>
                 </li>
+                <?php }?>
               </ul>
             </li>
+             <?php if($_SESSION['Status_s']=='ADMIN' or ($_SESSION['Status_s']=='SUSER' and $_SESSION['process_s']=='5')){?>
                         <li class="treeview">
               <a href="#">
                   <img src="images/icon_set1/load_download.ico" width="20">
@@ -278,7 +286,7 @@ require 'class/table_create.php';?>
                 </li>
               </ul>
             </li>
-            <?php }?>
+            <?php }}?>
           </ul>
         </section>
         <!-- /.sidebar -->

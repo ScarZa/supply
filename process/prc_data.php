@@ -417,7 +417,7 @@ $borrow_id=$select_borrow[0]['borrow_id'];
         echo "<span class='glyphicon glyphicon-remove'></span>";
         echo "<a href='index.php?page=content/add_User' >กลับ</a>";
     } else {
-        echo" <META HTTP-EQUIV='Refresh' CONTENT='2;URL=index.php?page=content/add_user'>";
+        echo" <META HTTP-EQUIV='Refresh' CONTENT='2;URL=index.php?page=content/add_User'>";
         }
     }elseif($method=='update_user'){
         if(!empty($_POST['user_pwd'])){
@@ -440,7 +440,7 @@ $borrow_id=$select_borrow[0]['borrow_id'];
         echo "<span class='glyphicon glyphicon-remove'></span>";
         echo "<a href='index.php?page=content/add_User' >กลับ</a>";
     } else {
-        echo" <META HTTP-EQUIV='Refresh' CONTENT='2;URL=index.php?page=content/add_user'>";
+        echo" <META HTTP-EQUIV='Refresh' CONTENT='2;URL=index.php?page=content/add_User&ss_id=".$_POST['name']."'>";
         }
     }
     }elseif(null !==(filter_input(INPUT_GET, 'method'))){

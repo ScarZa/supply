@@ -32,7 +32,7 @@ function Check_txt(){
 </script>
     <div class="form-group"> 
         <label>ระดับการใช้งาน &nbsp;</label><br>
-                    <?php //if($_SESSION['ss_status']=='ADMIN'){?>
+                    <?php if($_SESSION['Status_s']=='ADMIN'){ ?>
 	<select name='admin' id='admin'class='form-control' onchange="data_show(this.value,'process');"  required >
 			<?php 		
 				echo "<option value=''>เลือกระดับการใช้งาน</option>";			
@@ -44,18 +44,19 @@ function Check_txt(){
 				echo "<option value='ADMIN'  $ok >ผู้ดูแลระบบ</option>";						
 				?>
 			</select>
-                         <?php// }else{?>
-                                <!--<input type="text" name='admin'   id='admin' class='form-control'  value='<?= 'ผู้ดูแลระบบย่อย'?>' readonly >-->
-                         <?php// }?>
+                         <?php }else{?>
+                                <input type="text" name=''   id='' class='form-control'  value='<?= 'ผู้ดูแลระบบย่อย'?>' readonly >
+                                    <input type="hidden" name="admin" id="admin" value="<?= $resultGet[0]['ss_Status']?>">
+                         <?php }?>
                                 </div>
         <div class="form-group">
         <label>ระดับการดูแลระบบ &nbsp;</label><br>
-        <select class="form-control" name='process' id='process'>
+       
         <?php if(!empty($_GET['ss_id'])){ ?>
         
         <?php if($_SESSION['Status_s']=='ADMIN'){ ?>
 	
-            
+             <select class="form-control" name='process' id='process'>
 			<?php 		
 				echo "<option value=''>เลือกระบบ</option>";			
 		 		if( $resultGet[0]['ss_process']=="0"){$Ok='selected';
@@ -72,7 +73,8 @@ function Check_txt(){
                                   $process='ผู้ดูแลระบบพัสดุ';  
                                 }
 ?>
-                                <input type="text" name='process'   id='process' class='form-control'  value='<?= $process?>'  onkeydown="return nextbox(event, 'save');" readonly >
+                                <input type="text" name=''   id='' class='form-control'  value='<?= $process?>'  onkeydown="return nextbox(event, 'save');" readonly >
+                                    <input type="hidden" name="process" id="process" value="<?= $resultGet[0]['ss_process']?>">
                          <?php }}  else {?>
             <option value="">เลือกระบบ</option>
             <?php }?>
