@@ -76,6 +76,7 @@ function Check_txt(){
                                 <input type="text" name=''   id='' class='form-control'  value='<?= $process?>'  onkeydown="return nextbox(event, 'save');" readonly >
                                     <input type="hidden" name="process" id="process" value="<?= $resultGet[0]['ss_process']?>">
                          <?php }}  else {?>
+                                        <select class="form-control" name='process' id='process'>
             <option value="">เลือกระบบ</option>
             <?php }?>
 	</select>

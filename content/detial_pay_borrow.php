@@ -103,7 +103,7 @@ ORDER BY bor.borrow_id ASC,pb.pbo_id ASC";
                                         <td colspan="4">เลขที่ทะเบียนเอกสาร :&nbsp;<b><?= $result[0]['bo_no']?></b></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="4">วันที่ขอเบิก :&nbsp;<b><?= DateThai2($result[0]['bo_date'])?></b></td>
+                                        <td colspan="4">วันที่ขอยืม :&nbsp;<b><?= DateThai2($result[0]['bo_date'])?></b></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4">ผู้ขอเบิก :&nbsp;<b><?= $result[0]['fullname']?></b></td>
@@ -112,11 +112,11 @@ ORDER BY bor.borrow_id ASC,pb.pbo_id ASC";
                                         <td colspan="4">หน่วยงาน :&nbsp;<b><?= $result[0]['depName']?></b></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="4">สถานะการเบิก :&nbsp;<b><?php if($result[0]['bo_status']=='Y'){
+                                        <td colspan="4">สถานะการยืม :&nbsp;<b><?php if($result[0]['bo_status']=='Y'){
                                         echo 'จ่ายแล้ว';}  else {echo 'ยังไม่จ่าย';} ?></b></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="4">รายการที่ขอเบิก : </td>
+                                        <td colspan="4">รายการที่ขอยืม : </td>
                                     </tr>
                                     <?php $c=1; for($i=0;$i<count($result);$i++){ ?>
                                     <tr>
