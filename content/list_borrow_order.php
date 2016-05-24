@@ -20,7 +20,7 @@ $mydata=new Table($column);
                 $mydata->db_m($sql);
     
     $result=$mydata->select();//เรียกใช้ค่าจาก function ต้องใช้ตัวแปรรับ
-    $process="borrow_order";
+    $process="pay_borrow";
     $mydata->create_TB_PDF($process);
     $mydata->close_mysqli();
     ?>

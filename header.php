@@ -121,12 +121,12 @@ require 'class/table_create.php';?>
                                       
                                         if (empty($empno_photo)) {
                                     $photo = 'person.png';
-                                    $fold = $resultHos[0]['url']."/hrd/images/";
-                                     //$fold = "images/";
+                                    //$fold = $resultHos[0]['url']."/hrd/images/";
+                                    $fold = "images/";
                                 } else {
                                     $photo = $empno_photo;
-                                    $fold = $resultHos[0]['url']."/hrd/photo/";
-                                    //$fold = "photo/";
+                                    //$fold = $resultHos[0]['url']."/hrd/photo/";
+                                    $fold = "photo/";
                                 }
                                         //$db->close();
                                     }
@@ -187,12 +187,12 @@ require 'class/table_create.php';?>
      }                     
                     if (!empty($resultHos[0]['logo'])) {
                                     $pic = $resultHos[0]['logo'];
-                                    $fol = $resultHos[0]['url']."/hrd/logo/";
-                                    //$fol = "logo/";
+                                    //$fol = $resultHos[0]['url']."/hrd/logo/";
+                                    $fol = "logo/";
                                 } else {
                                     $pic = 'agency.ico';
-                                    $fol = $resultHos[0]['url']."/hrd/images/";
-                                    //$fol = "images/";
+                                    //$fol = $resultHos[0]['url']."/hrd/images/";
+                                    $fol = "images/";
                                 }
                     
                                 //$db->close();
@@ -225,9 +225,14 @@ require 'class/table_create.php';?>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
+                  <li>
+                  <a href="#"><i class="fa fa-circle-o text-orange"></i> การเบิกวัสดุ <i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
                 <li><a href="index.php?page=content/add_withdrawal_order"><i class="fa fa-circle-o text-red"></i> เบิกวัสดุ</a></li>
                 <?php if($_SESSION['Status_s']=='ADMIN' or ($_SESSION['Status_s']=='SUSER' and $_SESSION['process_s']=='5')){?>
                 <li><a href="index.php?page=content/add_pay_order"><i class="fa fa-circle-o text-red"></i> จ่ายวัสดุ</a></li>
+                </ul>
+                </li>
                 <?php }?>
                 <li>
                   <a href="#"><i class="fa fa-circle-o text-orange"></i> การยืมวัสดุ <i class="fa fa-angle-left pull-right"></i></a>
@@ -243,7 +248,8 @@ require 'class/table_create.php';?>
                   <a href="#"><i class="fa fa-circle-o text-orange"></i> รายงาน <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
                     <li><a href="index.php?page=content/add_pay_order&method=report"><i class="fa fa-circle-o text-yellow"></i> รายการขอเบิก-จ่าย</a></li>
-                    </ul>
+                    <li><a href="index.php?page=content/add_borrow_order&method=report"><i class="fa fa-circle-o text-yellow"></i> รายการขอยืม-จ่าย</a></li>
+                  </ul>
                 </li>
                 <?php }?>
               </ul>

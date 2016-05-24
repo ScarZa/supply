@@ -396,7 +396,7 @@ $mydata->db_m($sql);
 $select_borrow=$mydata->select();
 $borrow_id=$select_borrow[0]['borrow_id'];
 
-        $data=array($pay_date,date("Y-m-d"),$bo_id,$borrow_id,$mate_id,$up_amount,$_SESSION['user_s'],$receiver);
+        $data=array($pay_date,date("Y-m-d"),$bo_id,$borrow_id,$mate_id,$up_amount,$receiver,$_SESSION['user_s']);
         $table="se_pay_borrow";
         $check_list=$mydata->insert($table, $data);
         } 
@@ -517,6 +517,21 @@ $borrow_id=$select_borrow[0]['borrow_id'];
         echo "<a href='index.php?page=content/add_User&id=".$_GET['ss_id']."' >กลับ</a>";
     } else {
         echo" <META HTTP-EQUIV='Refresh' CONTENT='2;URL=index.php?page=content/add_User'>";
+        }
+        }elseif($method=='delete_pay_borrow') {
+        $table="se_borrow_order";
+        $delete_id=filter_input(INPUT_GET, 'del_id');
+        $where="bo_id='$delete_id'";
+        $del=$mydata->delete($table, $where);
+        
+        $table2="se_borrow";
+        $where2="bo_id='$delete_id'";
+        $del_list=$mydata->delete($table2, $where2);
+        if(($del and $del_list) ==false){
+        echo "<span class='glyphicon glyphicon-remove'></span>";
+        echo "<a href='index.php?page=content/add_borrow_order&id=$delete_id' >กลับ</a>";
+    } else {
+        echo" <META HTTP-EQUIV='Refresh' CONTENT='2;URL=index.php?page=content/add_borrow_order'>";
         }
         }
 }
