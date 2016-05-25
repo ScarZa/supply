@@ -112,7 +112,7 @@ ORDER BY bor.borrow_id ASC,pb.pbo_id ASC";
                                         <td colspan="4">หน่วยงาน :&nbsp;<b><?= $result[0]['depName']?></b></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="4">สถานะการยืม :&nbsp;<b><?php if($result[0]['bo_status']=='Y'){
+                                        <td colspan="4">สถานะการยืม :&nbsp;<b><?php if($result[0]['bo_status']=='Y' or $result[0]['bo_status']=='A'){
                                         echo 'จ่ายแล้ว';}  else {echo 'ยังไม่จ่าย';} ?></b></td>
                                     </tr>
                                     <tr>

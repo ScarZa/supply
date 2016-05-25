@@ -248,7 +248,7 @@ require 'class/table_create.php';?>
                   <a href="#"><i class="fa fa-circle-o text-orange"></i> รายงาน <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
                     <li><a href="index.php?page=content/add_pay_order&method=report"><i class="fa fa-circle-o text-yellow"></i> รายการขอเบิก-จ่าย</a></li>
-                    <li><a href="index.php?page=content/add_borrow_order&method=report"><i class="fa fa-circle-o text-yellow"></i> รายการขอยืม-จ่าย</a></li>
+                    <li><a href="index.php?page=content/add_pay_borrow&method=report"><i class="fa fa-circle-o text-yellow"></i> รายการขอยืม-จ่าย</a></li>
                   </ul>
                 </li>
                 <?php }?>
