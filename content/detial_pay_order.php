@@ -53,19 +53,28 @@ $myconn->read="../connection/conn_DB.txt";
 $myconn->config();
 $db=$myconn->conn_mysqli();
     $sql = "SELECT po.or_no,CONCAT(e.firstname,' ',e.lastname) as fullname,d.depName,po.or_date,
-po.or_status,m.mate_name,wd.amount,m.mate_unit,p.pay_date,p.total,p.remain,p.amount AS pay_amount,
-(SELECT CONCAT(e.firstname,' ',e.lastname) FROM emppersonal e
-WHERE e.empno=p.empno AND po.po_id=p.po_id AND po.po_id='$po_id')payer
+po.or_status,m.mate_name,wd.amount,m.mate_unit
 FROM se_pay_order po
 LEFT OUTER JOIN se_withdrawal wd ON wd.po_id=po.po_id
-LEFT OUTER JOIN se_pay p ON p.po_id=po.po_id AND p.wd_id=wd.wd_id
 INNER JOIN emppersonal e ON e.empno=po.empno
 INNER JOIN department d ON d.depId=po.dep_id
 INNER JOIN se_material m ON m.mate_id=wd.mate_id
 WHERE po.po_id='$po_id'
-ORDER BY wd.wd_id ASC,p.pay_id ASC";
+ORDER BY wd.wd_id ASC";
     $myconn->db_m($sql);
     $result=$myconn->select();
+   // $myconn->close_mysqli();
+    $sql = "SELECT CONCAT(e.firstname,' ',e.lastname) as fullname,
+m.mate_name,m.mate_unit,p.pay_date,p.total,p.remain,p.amount AS pay_amount,
+(SELECT CONCAT(e.firstname,' ',e.lastname) FROM emppersonal e
+WHERE e.empno=p.empno AND p.po_id='$po_id')payer
+FROM se_pay p
+INNER JOIN emppersonal e ON e.empno=p.empno
+INNER JOIN se_material m ON m.mate_id=p.mate_id
+WHERE p.po_id='$po_id'
+ORDER BY p.pay_id ASC";
+    $myconn->db_m($sql);
+    $result2=$myconn->select();
     $myconn->close_mysqli();
    include_once ('../plugins/funcDateThai.php');
     ?>
@@ -127,20 +136,20 @@ ORDER BY wd.wd_id ASC,p.pay_id ASC";
                                     <tr>
                                         <td><b>&nbsp;</b></td>
                                     </tr>
-                                        <td colspan="4">วันที่จ่าย :&nbsp;<b><?= DateThai2($result[0]['pay_date'])?></b></td>
+                                        <td colspan="4">วันที่จ่าย :&nbsp;<b><?= DateThai2($result2[0]['pay_date'])?></b></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="4">ผู้จ่าย :&nbsp;<b><?= $result[0]['payer']?></b></td>
+                                        <td colspan="4">ผู้จ่าย :&nbsp;<b><?= $result2[0]['payer']?></b></td>
                                     </tr>
                                    <tr>
                                         <td colspan="4">รายการที่จ่าย : </td>
                                     </tr>
-                                    <?php $c=1; for($i=0;$i<count($result);$i++){ ?>
+                                    <?php $c=1; for($i=0;$i<count($result2);$i++){ ?>
                                     <tr>
                                         <td><b><?= $c?>.</b></td>
-                                        <td><b><?= $result[$i]['mate_name']?></b></td>
-                                        <td>จำนวน <b><?= $result[$i]['pay_amount']?></b> <?= $result[$i]['mate_unit']?></td>
-                                        <td>คงค้างจ่าย <b><?= $result[$i]['remain']?></b> <?= $result[$i]['mate_unit']?></td>
+                                        <td><b><?= $result2[$i]['mate_name']?></b></td>
+                                        <td>จำนวน <b><?= $result2[$i]['pay_amount']?></b> <?= $result2[$i]['mate_unit']?></td>
+                                        <td>คงค้างจ่าย <b><?= $result2[$i]['remain']?></b> <?= $result2[$i]['mate_unit']?></td>
                                     </tr>
                                     <?php $c++; }?>
                                 </table>
