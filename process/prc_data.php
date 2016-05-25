@@ -130,7 +130,7 @@ $mate[$i]=$_POST['mate_id'][$i];
 $mate_id=$mate[$i];
 $amount[$i]=$_POST['amount'][$i];
 $up_amount=$amount[$i];
-$sql="select receive from se_material where mate_id='$mate_id'";
+$sql="select receive from se_material where mate_id='$mate_id' limit 1";
 $mydata->db_m($sql);
 $select_res=$mydata->select();
 $receive=$select_res[0]['receive']+$up_amount;
@@ -141,12 +141,12 @@ $receive=$select_res[0]['receive']+$up_amount;
         $where="mate_id='$mate_id'";
         $check_mate=$mydata->update($table, $data, $where,$field);//แบบ parameter ไม่ครบ ให้ใส่ค่าว่างเลย    
 
-$sql="select receive,pay from se_material where mate_id='$mate_id'";
+$sql="select receive,pay from se_material where mate_id='$mate_id' limit 1";
 $mydata->db_m($sql);
 $select_res_pay=$mydata->select();
 
 $order[$i]=$_POST['id'];
-echo $price[$i]=$_POST['price'][$i];
+$price[$i]=$_POST['price'][$i];
 
 $order_id=$order[$i];
 $price_in=$price[$i];
