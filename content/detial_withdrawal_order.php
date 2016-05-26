@@ -119,7 +119,7 @@ ORDER BY wd.wd_id ASC";
                             <?php if($result[0]['or_status']=='N' and empty($_GET['method'])){?>
                             <form name='form1' class="navbar-form navbar-left"  action='detial_withdrawal_order.php' method='get' enctype="multipart/form-data" OnSubmit="return fncSubmit();">
                                 <div class="input-group input-group">
-                                <input type="text" class="form-control" name="amount" placeholder="จำนวนรายการที่ต้องการเพิ่ม" size="1">
+                                    <input type="text" class="form-control" name="amount" placeholder="จำนวนรายการที่ต้องการเพิ่ม" size="1" required="">
                                 <input type="hidden" name="id" value="<?= $po_id?>">
                                 <input type="hidden" name="method" value="1">
                     <span class="input-group-btn">

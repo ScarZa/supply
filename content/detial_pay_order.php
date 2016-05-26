@@ -136,6 +136,8 @@ ORDER BY p.pay_id ASC";
                                     <tr>
                                         <td><b>&nbsp;</b></td>
                                     </tr>
+                                    <?php if(!empty($result2)){?>
+                                    <tr>
                                         <td colspan="4">วันที่จ่าย :&nbsp;<b><?= DateThai2($result2[0]['pay_date'])?></b></td>
                                     </tr>
                                     <tr>
@@ -151,7 +153,7 @@ ORDER BY p.pay_id ASC";
                                         <td>จำนวน <b><?= $result2[$i]['pay_amount']?></b> <?= $result2[$i]['mate_unit']?></td>
                                         <td>คงค้างจ่าย <b><?= $result2[$i]['remain']?></b> <?= $result2[$i]['mate_unit']?></td>
                                     </tr>
-                                    <?php $c++; }?>
+                                    <?php $c++; }}?>
                                 </table>
                             </div>
                         </div>

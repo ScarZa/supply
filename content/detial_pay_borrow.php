@@ -126,7 +126,7 @@ ORDER BY bor.borrow_id ASC,pb.pbo_id ASC";
                                         <td><b>&nbsp;</b></td>
                                     </tr>
                                     <?php $c++; }?>
-                                    <?php //if(!empty($result[0]['payer'])){ ?>
+                                    <?php if(!empty($result[0]['payer'])){ ?>
                                     <tr>
                                         <td><b>&nbsp;</b></td>
                                     </tr>
@@ -147,7 +147,7 @@ ORDER BY bor.borrow_id ASC,pb.pbo_id ASC";
                                         <td><b><?= $result[$i]['mate_name']?></b></td>
                                         <td>จำนวน <b><?= $result[$i]['pbo_amount']?></b> <?= $result[$i]['mate_unit']?></td>
                                     </tr>
-                                    <?php $c++; }//}?>
+                                    <?php $c++; }}?>
                                 </table>
                             </div>
                         </div>
