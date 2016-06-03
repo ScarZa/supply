@@ -11,7 +11,13 @@
                             }  else {
                                $code_where="where d.depId='".$_SESSION['dep_s']."'"; 
                             }
-$sql="SELECT po.or_no,CONCAT(e.firstname,' ',lastname) as fullname,po.or_date,d.depName,po.or_status,po.po_id,po.po_id from se_pay_order po
+$sql="SELECT po.or_no,CONCAT(e.firstname,' ',lastname) as fullname,po.or_date,d.depName,
+    CASE po.or_status
+WHEN 'N' THEN 'ยังไม่จ่าย'
+WHEN 'Y' THEN 'จ่ายแล้ว'
+ELSE 'Unknown'
+END AS status
+    ,po.po_id,po.po_id from se_pay_order po
         inner join emppersonal e ON e.empno=po.empno
 	INNER JOIN department d ON d.depId=po.dep_id
         $code_where
