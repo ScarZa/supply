@@ -7,8 +7,9 @@ $conf=$myconfig->config();
         $dbuser=$conf["username"];
         $dbpass=$conf["password"];
         $dbname=$conf["database"];
+        $dbport=$conf["port"];
         
-$dbh = new PDO('mysql:host='.$dbhost.';dbname='.$dbname.';charset=utf8',''.$dbuser.'',''.$dbpass.'');
+$dbh = new PDO('mysql:host='.$dbhost.';port='.$dbport.';dbname='.$dbname.';charset=utf8',''.$dbuser.'',''.$dbpass.'');
 
 
                 
