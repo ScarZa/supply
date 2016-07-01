@@ -200,7 +200,7 @@ $total=$select_res_pay[0]['receive']-$select_res_pay[0]['pay'];
         $table="se_list_order";
         $where="lo_id='$lo_id'";
         $field=array("order_id","mate_id","price","amount","total");
-        $check_list=$mydata->update($table, $data, $where, $field);
+        $check_list=$mydata->update($table, $data, $where, $field);//แบบกำหนดfield
         } 
          if(!$check_list){
         echo "<span class='glyphicon glyphicon-remove'></span>";

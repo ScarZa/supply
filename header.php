@@ -121,12 +121,12 @@ require 'class/table_create.php';?>
                                       
                                         if (empty($empno_photo)) {
                                     $photo = 'person.png';
-                                    //$fold = $resultHos[0]['url']."/hrd/images/";
-                                    $fold = "images/";
+                                    $fold = $resultHos[0]['url']."/hrd/images/";
+                                    //$fold = "images/";
                                 } else {
                                     $photo = $empno_photo;
-                                    //$fold = $resultHos[0]['url']."/hrd/photo/";
-                                    $fold = "photo/";
+                                    $fold = $resultHos[0]['url']."/hrd/photo/";
+                                    //$fold = "photo/";
                                 }
                                         //$db->close();
                                     }
@@ -187,12 +187,12 @@ require 'class/table_create.php';?>
      }                     
                     if (!empty($resultHos[0]['logo'])) {
                                     $pic = $resultHos[0]['logo'];
-                                    //$fol = $resultHos[0]['url']."/hrd/logo/";
-                                    $fol = "logo/";
+                                    $fol = $resultHos[0]['url']."/hrd/logo/";
+                                    //$fol = "logo/";
                                 } else {
                                     $pic = 'agency.ico';
-                                    //$fol = $resultHos[0]['url']."/hrd/images/";
-                                    $fol = "images/";
+                                    $fol = $resultHos[0]['url']."/hrd/images/";
+                                    //$fol = "images/";
                                 }
                     
                                 //$db->close();
