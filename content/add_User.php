@@ -52,7 +52,7 @@ function fncSubmit()
                             <input type="text" name='names'   id='names' class='form-control' value='<?=$resultGet[0]['fullname']?>'  onkeydown="return nextbox(event, 'save');" readonly >
                             <input type="hidden" name="name" id="name" value="<?=$resultGet[0]['ss_Name']?>">
                             <?php }else{?>
-                         	<select name="name" id="name" required  class="form-control"  onkeydown="return nextbox(event, 'fname');"> 
+                         	<select name="name" id="name" required  class="form-control select2"  onkeydown="return nextbox(event, 'fname');"> 
 				<?php	$sql = "SELECT empno,concat(firstname,' ',lastname) as fullname  FROM emppersonal order by empno ";
 				 echo "<option value=''>เลือกบุคลากร</option>";
                                  $mydata1=new Db_mng();
