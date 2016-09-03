@@ -134,6 +134,8 @@
     <!-- DataTables -->
     <script src="plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="plugins/select2/select2.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <!-- page script -->
     <script>
       $(function () {
@@ -146,6 +148,7 @@
           "info": true,
           "autoWidth": false
         });
+        $(".select2").select2();
       });
     </script>
     <!-- jQuery UI 1.11.4 -->

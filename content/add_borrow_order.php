@@ -39,8 +39,9 @@ function nextbox(e, id) {
                     <div class="row">
                         
                     <div class="col-lg-3 ol-xs-12"> 
+                        <div class="form-group">
                 <label>ผู้ยืม &nbsp;</label>
-<select name="empno" id="empno" required  class="form-control"  onkeydown="return nextbox(event, 'mate_name');">
+                <select name="empno" id="empno" required  class="form-control select2" style="width: 100%"  onkeydown="return nextbox(event, 'mate_name');">
     <option value="">เลือกบุคคลากร</option> 
         <?php
         $sql="SELECT empno, CONCAT(firstname,' ',lastname) as fullname FROM emppersonal ORDER BY empno";
@@ -58,7 +59,7 @@ function nextbox(e, id) {
     }
         ?>
             
-        </select>             	</div>
+</select>             	</div></div>
                         <div class="col-lg-3 ol-xs-12"> 
                 <label>วันที่ขอยืม &nbsp;</label>
                 <input value='<?php if(isset($method)){ echo $edit[0]['or_date'];}?>' type="date" class="form-control" name="bo_date" id="bo_date" placeholder="วันที่" onkeydown="return nextbox(event, 'mate_unit')">
@@ -66,8 +67,9 @@ function nextbox(e, id) {
                        
                         
                   <div class="col-lg-3 ol-xs-12">
+                      <div class="form-group">
          			<label>หน่วยงาน &nbsp;</label>
-<select name="dep_id" id="dep_id" required  class="form-control"  onkeydown="return nextbox(event, 'mate_name');">
+                                <select name="dep_id" id="dep_id" required  class="form-control select2" style="width: 100%;" onkeydown="return nextbox(event, 'mate_name');">
     <option value="">เลือกหน่วยงาน</option> 
         <?php
         $sql="select * from department order by depid";
@@ -85,16 +87,17 @@ function nextbox(e, id) {
     }
         ?>
             
-        </select>                       </div>
+</select>                       </div></div>
                     <div class="col-lg-3 ol-xs-12"> 
                 <label>เลขทะเบียนยืม &nbsp;</label>
                 <input value="<?php if(isset($method)){ echo $edit[0]['order_amount'];}?>" type="text" class="form-control" name="bo_no" id="bo_no" placeholder="เลขทะเบียนยืม" onkeydown="return nextbox(event, 'min')">
-             	</div>
-                        <div class="col-lg-3 ol-xs-12"> 
+             	</div></div>
+                    <div class="row">
+                <div class="col-lg-3 ol-xs-12"> 
                 <label>จำนวนรายการที่ขอยืม &nbsp;</label>
                 <input value="<?php if(isset($method)){ echo $edit[0]['order_amount'];}?>" type="text" class="form-control" name="borrow" id="borrow" placeholder="จำนวนรายการที่ขอยืม" onkeydown="return nextbox(event, 'min')">
              	</div>
-                    </div>
+                    </div>    
                 </div>
               </div>
           </div>

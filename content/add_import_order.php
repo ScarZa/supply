@@ -140,7 +140,7 @@ if(null !==(filter_input(INPUT_GET, 'method', FILTER_SANITIZE_STRING))){
              	</div>
                     <div class="col-lg-3 ol-xs-12"> 
                 <label>จำนวนรายการ &nbsp;</label>
-                <input value='<?php if(isset($method)){ echo $edit[0]['total_amount'];}?>' type="text" class="form-control" name="total_amount" id="total_amount" placeholder="จำนวนรายการวัสดุที่นำเข้า" onkeydown="return nextbox(event, 'max')">
+                <input value='<?php if(isset($method)){ echo $edit[0]['total_amount'];}?>' <?php if(isset($method)){ echo 'readonly';}?> type="text" class="form-control" name="total_amount" id="total_amount" placeholder="จำนวนรายการวัสดุที่นำเข้า" onkeydown="return nextbox(event, 'max')">
              	</div>                      
                     </div>
                 </div>

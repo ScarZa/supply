@@ -54,7 +54,7 @@
         </tr>
         <tr>
             <td>ผู้รับวัสดุ : </td>
-            <td><select name="receiver" id="receiver" required  class="form-control"  onkeydown="return nextbox(event, 'mate_name');">
+            <td><select name="receiver" id="receiver" required  class="form-control select2"  onkeydown="return nextbox(event, 'mate_name');">
     <option value="">เลือกบุคคลากร</option> 
         <?php
         $sql="SELECT empno, CONCAT(firstname,' ',lastname) as fullname FROM emppersonal ORDER BY empno";

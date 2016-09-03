@@ -1,12 +1,38 @@
 <?php session_start(); 
-require 'class/table_create.php';?>
+require 'class/table_create.php';
+                //require 'class/db_mng.php';
+                $myread=new Db_mng();
+                $myread->read="connection/conn_DB.txt";
+                $reader=$myread->config();
+                $db=$myread->conn_mysqli();
+                //print_r($db);
+    if($db){
+//===ชื่อโรงพยาบาล
+            
+                    $sql = "select * from  hospital order by hospital limit 1";
+                    $myread->db_m($sql);
+                    $resultHos=$myread->select();
+                    $myread->close_mysqli();
+     }                     
+                    if (!empty($resultHos[0]['logo'])) {
+                                    $pic = $resultHos[0]['logo'];
+                                    $fol = $resultHos[0]['url']."/hrd/logo/";
+                                    //$fol = "logo/";
+                                } else {
+                                    $pic = 'agency.ico';
+                                    $fol = $resultHos[0]['url']."/hrd/images/";
+                                    //$fol = "images/";
+                                }
+                    
+                                //$db->close();
+                    ?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>ระบบพัสดุโรงพยาบาล</title>
-    <LINK REL="SHORTCUT ICON" HREF="<?=$resultHos[0]['url']?>/hrd/images/logo.png">
+    <LINK REL="SHORTCUT ICON" HREF="<?= $fol.$pic?>">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -170,33 +196,7 @@ require 'class/table_create.php';?>
           </div>
         </nav>
       </header>
-        <?php                
-                //require 'class/db_mng.php';
-                $myread=new Db_mng();
-                $myread->read="connection/conn_DB.txt";
-                $reader=$myread->config();
-                $db=$myread->conn_mysqli();
-                //print_r($db);
-    if($db){
-//===ชื่อโรงพยาบาล
-            
-                    $sql = "select * from  hospital order by hospital limit 1";
-                    $myread->db_m($sql);
-                    $resultHos=$myread->select();
-                    $myread->close_mysqli();
-     }                     
-                    if (!empty($resultHos[0]['logo'])) {
-                                    $pic = $resultHos[0]['logo'];
-                                    $fol = $resultHos[0]['url']."/hrd/logo/";
-                                    //$fol = "logo/";
-                                } else {
-                                    $pic = 'agency.ico';
-                                    $fol = $resultHos[0]['url']."/hrd/images/";
-                                    //$fol = "images/";
-                                }
-                    
-                                //$db->close();
-                    ?>
+        
       <!-- Left side column. contains the logo and sidebar -->
       <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->

@@ -75,7 +75,7 @@
                                 <div class="form-group">
                             <label>ชนิดวัสดุ &nbsp;</label>
 <!--<select name="mate_id[]" id="mate_id[]" required  class="form-control"  onkeydown="return nextbox(event, 'mate_name');">-->
-    <select name="mate_id[]" id="mate_id[]" required  class="form-control" style="width: 100%;">
+    <select name="mate_id[]" id="mate_id[]" required  class="form-control select2" style="width: 100%;">
     <option value="">เลือกวัสดุ</option> 
         <?php
         $sql="select * from se_material";
